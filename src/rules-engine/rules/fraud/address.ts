@@ -43,6 +43,7 @@ export const outOfHomeArea = new Rule({
   event: {
     type: FRAUD_EVENTS.OUT_OF_HOME_AREA,
   },
+  priority: 10, // Ensures being run before the chained rule
   onSuccess: (_, alm) => {
     alm.addRuntimeFact(FRAUD_EVENTS.OUT_OF_HOME_AREA, true)
   },

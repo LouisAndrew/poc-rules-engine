@@ -18,6 +18,7 @@ export const nameBlacklisted = new Rule({
       },
     ],
   },
+  priority: 10, // Ensures being run before the chained rule
   event: {
     type: FRAUD_EVENTS.NAME_BLACKLISTED,
   },
