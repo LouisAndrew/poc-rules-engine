@@ -1,28 +1,40 @@
-import configPrettier from "eslint-config-prettier";
-import confitPrettierTs from "eslint-config-prettier/@typescript-eslint";
-
 module.exports = {
   env: {
     es2021: true,
     node: true,
   },
-  extends: ["airbnb-base", "plugin:@typescript-eslint/recommended"],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+  extends: ['airbnb-base', 'plugin:@typescript-eslint/recommended'],
+  plugins: ['@typescript-eslint', 'prettier'],
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
   },
-  plugins: ["@typescript-eslint", "prettier"],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: './',
+  },
   rules: {
-    "prettier/prettier": [
+    'prettier/prettier': [
       1,
       {
-        trailingComma: "es5",
+        trailingComma: 'es5',
         singleQuote: true,
         semi: false,
       },
     ],
-    ...configPrettier.rules,
-    ...confitPrettierTs.rules,
+    semi: 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/prefer-default-export': 0,
   },
-};
+}
