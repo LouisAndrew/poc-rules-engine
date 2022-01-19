@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc & node .",
+    "start:ext": "node ./external/index.js",
     "dev": "tsc -w & nodemon ."
   },
   "nodemonConfig": {
