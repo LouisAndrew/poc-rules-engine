@@ -1,8 +1,11 @@
 import { ExternalRule } from './type'
 
+/**
+ * Check if address is invalid
+ */
 export const sampleExternalRule: ExternalRule = {
   name: 'validate-zip',
-  endpoint: 'http://localhost:5000/validate-address',
+  endpoint: 'http://localhost:5001/validate-address',
   factId: 'zip',
   httpMethod: 'POST',
   matches: [
@@ -13,7 +16,7 @@ export const sampleExternalRule: ExternalRule = {
     {
       type: 'body',
       path: 'valid',
-      value: true,
+      value: false,
     },
   ],
 }

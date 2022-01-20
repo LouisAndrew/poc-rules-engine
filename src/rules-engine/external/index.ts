@@ -25,7 +25,7 @@ export const initializeExternalRule = (
         {
           fact: name,
           operator: 'equal',
-          value: false,
+          value: true,
         },
       ],
     },
