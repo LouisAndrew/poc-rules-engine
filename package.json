@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc & node .",
+    "start:ext": "node ./external/index.js",
     "dev": "tsc -w & nodemon ."
   },
   "nodemonConfig": {
@@ -33,11 +34,16 @@
   },
   "homepage": "https://github.com/LouisAndrew/poc-rules-engine#readme",
   "dependencies": {
+    "axios": "^0.25.0",
     "express": "4.17.2",
-    "json-rules-engine": "6.1.2"
+    "json-rules-engine": "6.1.2",
+    "jsonpath": "^1.1.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/express": "4.17.13",
+    "@types/jsonpath": "^0.2.0",
+    "@types/lodash": "^4.14.178",
     "@types/node": "17.0.8",
     "@typescript-eslint/eslint-plugin": "5.9.1",
     "@typescript-eslint/parser": "5.9.1",

@@ -11,7 +11,7 @@ app.get('/', (_, res) => {
   res.status(200).send()
 })
 
-app.get('/rules/foul', async (req, res) => {
+app.post('/rules/foul', async (req, res) => {
   const facts = req.body
   const { events } = await engine.run(facts)
   res.status(200).send({
@@ -19,11 +19,12 @@ app.get('/rules/foul', async (req, res) => {
   })
 })
 
-app.get('/rules/fraud', async (req, res) => {
+app.post('/rules/fraud', async (req, res) => {
   const facts = req.body
-  const { events } = await fraudEngine.run(facts)
-  const fraudScore = parseFloat(calculateFraudScore(events).toFixed(2))
-  res.status(200).send({ events, fraudScore })
+  const { events, almanac } = await fraudEngine.run(facts)
+  const fraudScore = await calculateFraudScore(events, almanac)
+  const formattedScore = parseFloat(fraudScore.toFixed(2))
+  res.status(200).send({ events, fraudScore: formattedScore })
 })
 
 app.listen(port, () => console.log(`Running on port ${port}`))
