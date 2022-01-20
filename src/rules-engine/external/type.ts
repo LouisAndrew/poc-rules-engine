@@ -40,4 +40,8 @@ export type ExternalRule = {
    */
   httpMethod: 'POST'
   matches: Match[]
+  /**
+   * Score to add on the fraud score if the rule succeeds.
+   */
+  score: number
 }

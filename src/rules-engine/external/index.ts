@@ -8,7 +8,9 @@ export const initializeExternalRule = (
   engine: Engine,
   externalRule: ExternalRule,
 ) => {
-  const { factPath, factId, name } = externalRule;
+  const {
+    factPath, factId, name, score,
+  } = externalRule;
 
   engine.addFact(name, async (_, alm) => {
     const factValue = await alm.factValue(factId, {}, factPath)
@@ -35,6 +37,7 @@ export const initializeExternalRule = (
     },
     onSuccess: (_, alm) => {
       alm.addRuntimeFact(eventType, true)
+      alm.addRuntimeFact(`external-score--${name}`, score)
     },
   })
 };
